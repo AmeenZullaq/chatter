@@ -15,9 +15,7 @@ abstract class AuthRepo {
 
   Future<Either<ErrorModel, Unit>> logOut();
 
-  Future<void> saveUserDataRemotlly(UserModel user);
-
-  Future<UserModel> getUserDataRemotlly({required String userId});
-
-  Future<Either<ErrorModel, Unit>> deleteUser(String userId);
+  Future<Either<ErrorModel, Unit>> deleteUser({
+    required String documentId,
+  });
 }

@@ -40,6 +40,7 @@ Future<void> authDependencyInit() async {
     () {
       return AuthRemoteDataSourceImpl(
         getIt.get<FirebaseAuthService>(),
+        getIt.get<RemoteDatabaseService>(),
       );
     },
   );
@@ -47,8 +48,6 @@ Future<void> authDependencyInit() async {
     () {
       return AuthRepoImpl(
         getIt.get<AuthLocalDataSource>(),
-        getIt.get<FirebaseAuthService>(),
-        getIt.get<RemoteDatabaseService>(),
         getIt.get<AuthRemoteDataSource>(),
       );
     },
@@ -67,5 +66,7 @@ Future<void> hiveDatabaseInit() async {
     () => HiveDatabase(),
   );
   await Hive.initFlutter();
-  Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(
+    UserModelAdapter(),
+  );
 }
