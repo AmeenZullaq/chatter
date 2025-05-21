@@ -67,7 +67,7 @@ class FirestoreService extends RemoteDatabaseService {
   Future<void> deleteData({
     required String path,
     required String documentId,
-  }) {
-    return firestore.collection(path).doc(documentId).delete();
+  }) async {
+    await firestore.collection(path).doc(documentId).delete();
   }
 }
